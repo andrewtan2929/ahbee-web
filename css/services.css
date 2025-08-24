@@ -1,0 +1,228 @@
+/* ====================================================== */
+/* SERVICES PAGE CSS - Mobile-First, Device & Orientation Aware */
+/* ====================================================== */
+
+/* === Base Styles (Mobile portrait default) === */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #111; /* dark neutral background */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+/* === Header & Navigation === */
+header {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: rgba(0,0,0,0.25);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #FFD700;
+  text-shadow: 0 0 5px #FFD700;
+}
+
+/* === Main Content === */
+main {
+  flex: 1;
+  padding: 1rem 2rem;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.services-section h2 {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #FF6347;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Services List */
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.service-item {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+
+.service-item h3 {
+  margin-top: 0;
+  color: #FFD700;
+  font-size: 1.2rem;
+}
+
+/* Call to action */
+.call-to-action {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+
+.call-to-action a {
+  color: #FF6347;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.call-to-action a:hover {
+  text-decoration: underline;
+}
+
+/* === Footer === */
+footer {
+  text-align: center;
+  padding: 5px 0;
+  font-size: 0.8rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* ====================================================== */
+/* MOBILE LANDSCAPE - 0px to 767px, orientation: landscape */
+/* ====================================================== */
+@media (max-width: 767px) and (orientation: landscape) {
+  main {
+    padding: 1rem 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .services-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .service-item h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* ====================================================== */
+/* TABLET PORTRAIT - 768px to 1023px, orientation: portrait */
+/* ====================================================== */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+  main {
+    padding: 2rem 3rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .services-section h2 {
+    font-size: 1.4rem;
+  }
+
+  .service-item {
+    padding: 1.5rem;
+  }
+
+  .service-item h3 {
+    font-size: 1.2rem;
+  }
+}
+
+/* ====================================================== */
+/* TABLET LANDSCAPE - 768px to 1023px, orientation: landscape */
+/* ====================================================== */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+  main {
+    padding: 2rem 3rem;
+  }
+
+  .services-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .service-item {
+    flex: 1 1 calc(50% - 2rem);
+  }
+}
+
+/* ====================================================== */
+/* DESKTOP & LAPTOP - 1024px+ (portrait & landscape) */
+/* ====================================================== */
+@media (min-width: 1024px) {
+  main {
+    padding: 3rem 5rem;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .services-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .services-list {
+    flex-direction: row;
+    gap: 2.5rem;
+  }
+
+  .service-item {
+    flex: 1 1 calc(50% - 2.5rem);
+    padding: 2rem;
+  }
+
+  .service-item h3 {
+    font-size: 1.3rem;
+  }
+}

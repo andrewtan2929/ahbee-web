@@ -1,0 +1,225 @@
+/* ====================================================== */
+/* CONTACT PAGE CSS - Mobile-First, Device & Orientation Aware */
+/* Ready for Static Hosting (Netlify)                     */
+/* ====================================================== */
+
+/* === Base Styles (Mobile portrait default) === */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ADD8E6; /* light blue background */
+  color: #111;               /* dark text for contrast */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+/* === Header & Navigation === */
+header {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 128, 0.25); /* semi-transparent navy */
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #111; /* dark text for contrast */
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #FFD700; /* golden hover */
+  text-shadow: 0 0 5px #FFD700;
+}
+
+/* === Main Content === */
+main {
+  flex: 1;
+  padding: 1rem 2rem;
+}
+
+.contact-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-form-column,
+.contact-info-column {
+  background-color: rgba(255, 255, 255, 0.85); /* white overlay with transparency */
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #007BFF; /* blue heading */
+}
+
+.intro-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+/* Contact Form Styles */
+.contact-form label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  background-color: #fff;
+  color: #111;
+}
+
+.contact-form button {
+  margin-top: 1rem;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Contact Info Section */
+.contact-info h2 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #007BFF;
+}
+
+.contact-info p {
+  margin: 0.3rem 0;
+  color: #111;
+}
+
+.contact-info a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 5px 0;
+  font-size: 0.8rem;
+  background-color: rgba(0, 0, 128, 0.1); /* subtle navy overlay */
+  color: #111;
+}
+
+/* ====================================================== */
+/* MOBILE LANDSCAPE - 0px to 767px, orientation: landscape */
+/* ====================================================== */
+@media (max-width: 767px) and (orientation: landscape) {
+  main {
+    padding: 1rem 1.5rem;
+  }
+}
+
+/* ====================================================== */
+/* TABLET PORTRAIT - 768px to 1023px, orientation: portrait */
+/* ====================================================== */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+  main {
+    padding: 2rem 3rem;
+  }
+}
+
+/* ====================================================== */
+/* TABLET LANDSCAPE - 768px to 1023px, orientation: landscape */
+/* ====================================================== */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+  main {
+    padding: 2rem 3rem;
+  }
+
+  .contact-columns {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .contact-form-column,
+  .contact-info-column {
+    flex: 1 1 50%;
+  }
+}
+
+/* ====================================================== */
+/* DESKTOP & LAPTOP - 1024px+ (portrait & landscape) */
+/* ====================================================== */
+@media (min-width: 1024px) {
+  main {
+    padding: 3rem 5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .contact-columns {
+    flex-direction: row;
+    gap: 2.5rem;
+  }
+
+  .contact-form-column,
+  .contact-info-column {
+    flex: 1 1 50%;
+    padding: 2rem;
+  }
+}

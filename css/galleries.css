@@ -1,0 +1,252 @@
+/* ====================================================== */
+/* GALLERIES PAGE CSS - Mobile-First, Device & Orientation Aware */
+/* Ready for Static Hosting (Netlify)                     */
+/* ====================================================== */
+
+/* === Base Styles (Mobile portrait default) === */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  color: #111;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* === Header & Navigation === */
+header {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #111;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #FFD700;
+  text-shadow: 0 0 5px #FFD700;
+}
+
+/* === Main Content === */
+main {
+  flex: 1;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* === Gallery Container === */
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  align-items: center;
+}
+
+.gallery-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+}
+
+.gallery-caption {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #111;
+}
+
+.slideshow-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.gallery-item.slideshow img {
+  width: 100%;
+  display: none;
+  border-radius: 8px;
+}
+
+.gallery-item.slideshow img.active {
+  display: block;
+}
+
+.slideshow-controls {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.slideshow-controls button {
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #FFD700;
+  color: #111;
+  cursor: pointer;
+}
+
+.slideshow-controls button:hover {
+  background-color: #FFB600;
+}
+
+/* === Footer === */
+footer {
+  text-align: center;
+  padding: 5px 0;
+  font-size: 0.8rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #111;
+}
+
+/* ====================================================== */
+/* MOBILE - 0px to 767px */
+@media (max-width: 767px) {
+  main {
+    padding: 1rem 1.5rem;
+  }
+
+  .gallery-item-wrapper {
+    width: 92%;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+}
+
+/* TABLET PORTRAIT - 768px to 1023px */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+  main {
+    padding: 2rem 3rem;
+  }
+
+  .gallery-item-wrapper {
+    width: 70%;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+/* TABLET LANDSCAPE - 768px to 1023px */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+  main {
+    padding: 2rem 3rem;
+  }
+
+  .gallery-container {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .gallery-item-wrapper {
+    width: 42%;
+    margin-left: 3%;   /* 6% total away from center */
+    margin-right: 3%;
+  }
+}
+
+/* LAPTOP - 1024px to 1279px */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  main {
+    padding: 2.5rem 4rem;
+  }
+
+  .gallery-container {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .gallery-item-wrapper {
+    width: 42%;
+    margin-left: 3%;   /* 6% total away from center */
+    margin-right: 3%;
+  }
+}
+
+/* DESKTOP & LARGE SCREENS - 1280px+ */
+@media (min-width: 1280px) {
+  .gallery-container {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .gallery-item-wrapper {
+    width: 42%;
+    margin-left: 3%;   /* 6% total away from center */
+    margin-right: 3%;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+}

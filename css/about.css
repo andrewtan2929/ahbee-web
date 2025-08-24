@@ -1,0 +1,165 @@
+/* ====================================================== */
+/* ABOUT PAGE CSS - Mobile-First, Device & Orientation Aware */
+/* ====================================================== */
+
+/* === Base Styles (Mobile portrait default) === */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #F0F0F0;  /* Bright soft gray background */
+  color: #111111;              /* Dark text for good contrast */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* === Header & Navigation === */
+header {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: black;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #FFD700;
+  text-shadow: 0 0 5px #FFD700;
+}
+
+/* === Main Content === */
+main {
+  flex: 1;
+  padding: 1rem 2rem;
+}
+
+.about-section {
+  background-color: rgba(255, 255, 255, 0.85); /* translucent white box */
+  color: #111111;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.15);
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+.about-section h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #FF6347; /* highlight gold/orange */
+}
+
+.about-section p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* === Footer === */
+footer {
+  text-align: center;
+  padding: 5px 0;
+  font-size: 0.8rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #111111;
+}
+
+/* ====================================================== */
+/* MOBILE LANDSCAPE - 0px to 767px, orientation: landscape */
+/* ====================================================== */
+@media (max-width: 767px) and (orientation: landscape) {
+  main {
+    padding: 1rem 1.5rem;
+  }
+
+  .about-section h1 {
+    font-size: 1.6rem;
+  }
+}
+
+/* ====================================================== */
+/* TABLET PORTRAIT - 768px to 1023px, orientation: portrait */
+/* ====================================================== */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+  main {
+    padding: 2rem 3rem;
+  }
+
+  .about-section h1 {
+    font-size: 2rem;
+  }
+
+  .about-section {
+    padding: 2rem;
+  }
+}
+
+/* ====================================================== */
+/* TABLET LANDSCAPE - 768px to 1023px, orientation: landscape */
+/* ====================================================== */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+  main {
+    padding: 2rem 3rem;
+  }
+
+  .about-section {
+    padding: 2rem;
+  }
+}
+
+/* ====================================================== */
+/* DESKTOP & LAPTOP - 1024px+ (portrait & landscape) */
+/* ====================================================== */
+@media (min-width: 1024px) {
+  main {
+    padding: 3rem 5rem;
+  }
+
+  .about-section h1 {
+    font-size: 2.2rem;
+  }
+
+  .about-section {
+    padding: 2.5rem;
+  }
+}

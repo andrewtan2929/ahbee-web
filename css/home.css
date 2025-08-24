@@ -1,0 +1,241 @@
+/* ====================================================== */
+/* HOME PAGE CSS - Mobile-First, Device & Orientation Aware */
+/* Ready for Static Hosting (Netlify)                     */
+/* ====================================================== */
+
+/* === Base Styles (Mobile portrait default) === */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('../images/wallpaper/cage_trailer.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll; /* mobile safe */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden; /* prevent horizontal scroll */
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* === Header & Navigation === */
+header.logo-header {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+nav.menu {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 0.5rem;
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+nav.menu ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+nav.menu ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+nav.menu ul li a:hover,
+nav.menu ul li a.active {
+  color: #FFD700;
+  text-shadow: 0 0 5px #FFD700;
+}
+
+/* === Logo & Business Statement === */
+.logo-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.logo-left img.logo-ahbee {
+  max-width: 90%;
+  height: auto;
+}
+
+.business-statement {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  max-width: 90%;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.highlight {
+  font-weight: bold;
+  color: #FF6347;
+}
+
+/* === Main & Footer === */
+main {
+  flex: 1;
+}
+
+footer {
+  text-align: center;
+  padding: 5px 0;
+  font-size: 0.8rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* ====================================================== */
+/* MOBILE LANDSCAPE - 0px to 767px, orientation: landscape */
+/* ====================================================== */
+@media (max-width: 767px) and (orientation: landscape) {
+  .logo-row {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .business-statement {
+    max-width: 50%;
+    text-align: left;
+  }
+
+  nav.menu ul li a {
+    font-size: 0.9rem;
+  }
+}
+
+/* ====================================================== */
+/* FIREFOX MOBILE COMPATIBILITY TWEAKS */
+/* ====================================================== */
+@media (max-width: 1023px) {
+  body {
+    background-attachment: scroll !important;
+  }
+
+  .logo-left,
+  .business-statement {
+    min-width: 0;
+  }
+
+  .logo-row {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@supports (-moz-appearance: none) {
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+}
+
+/* ====================================================== */
+/* TABLET PORTRAIT - 768px to 1023px, orientation: portrait */
+/* ====================================================== */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+  nav.menu ul li a {
+    font-size: 1.2rem;
+  }
+
+  .logo-row {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .business-statement {
+    max-width: 380px;
+    font-size: 1.1rem;
+    text-align: left;
+  }
+}
+
+/* ====================================================== */
+/* TABLET LANDSCAPE - 768px to 1023px, orientation: landscape */
+/* ====================================================== */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+  nav.menu ul li a {
+    font-size: 1.1rem;
+  }
+
+  .logo-row {
+    gap: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  .business-statement {
+    max-width: 400px;
+  }
+}
+
+/* ====================================================== */
+/* DESKTOP & LAPTOP - 1024px+ (portrait & landscape) */
+/* ====================================================== */
+@media (min-width: 1024px) {
+  body {
+    background-attachment: fixed; /* Desktop only */
+  }
+
+  nav.menu {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.75rem 1rem 0.75rem 0;
+  width: fit-content;     /* only as wide as its content */
+  margin-left: auto;      /* stick to right side */
+}
+
+  nav.menu ul li a {
+    font-size: 1.2rem; /* fixed stray + bug */
+  }
+
+  .logo-row {
+    flex-direction: column;
+    align-items: flex-start;   /* align everything left */
+    padding: 5px 0px 10px 50px;
+    gap: 1rem;
+  }
+
+  .logo-left img.logo-ahbee {
+    max-height: 250px;
+  }
+
+  .business-statement {
+    font-size: 1.2rem;
+    max-width: 550px;
+    text-align: left;  /* statement left aligned under logo */
+    margin-top: 2.5rem;
+  }
+}

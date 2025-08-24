@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drawings | Ahbee Fabrication</title>
+  <link rel="stylesheet" href="css/drawings.css?v=6" />
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="nav-home">Home</a></li>
+        <li><a href="about.html" class="nav-about">About</a></li>
+        <li><a href="services.html" class="nav-services">Services</a></li>
+        <li><a href="galleries.html" class="nav-galleries">Galleries</a></li>
+        <li><a href="drawings.html" class="nav-drawings active">Drawings</a></li>
+        <li><a href="contact.html" class="nav-contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+    <main>
+      <h1>Drawings</h1>
+      <p>Here are some of our fabrication sketches and detailed drawings:</p>
+
+      <div class="drawings-container">
+        <div class="drawing-list">
+          <h2>Drawing List</h2>
+          <ul>
+            <li>80000A</li>
+            <li>80000B</li>
+            <li>80001C</li>
+            <li>80002D</li>
+            <li>80003E</li>
+          </ul>
+        </div>
+
+        <div class="drawing-display">
+          <!-- Default PDF -->
+          <iframe src="images/drawings/Dwg.%20No%2080000A.pdf" title="Drawing 80000A PDF"></iframe>
+        </div>
+      </div>
+    </main>
+  <footer>
+    <p>&copy; 2025 Ahbee Fabrication</p>
+  </footer>
+
+  <script>
+    // Get all the drawing list items
+    const drawingItems = document.querySelectorAll('.drawing-list ul li');
+    const iframe = document.querySelector('.drawing-display iframe');
+
+    // Function to update iframe based on clicked drawing
+    function changeDrawing(event) {
+      const drawing = event.target.textContent.trim(); // Get drawing name like '80000A'
+      const drawingPath = `images/drawings/Dwg.%20No%20${drawing}.pdf`; // Use the drawing number as is, without extra text
+      iframe.src = drawingPath; // Update iframe src to load the new PDF
+    }
+
+    // Add event listener to each drawing item
+    drawingItems.forEach(item => {
+      item.addEventListener('click', changeDrawing);
+    });
+  </script>
+</body>
+</html>

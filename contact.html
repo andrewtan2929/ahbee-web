@@ -1,0 +1,77 @@
+<!-- contact.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | Ahbee Fabrication</title>
+  <link rel="stylesheet" href="css/contact.css" />
+</head>
+<body class="contact-page">
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="nav-home">Home</a></li>
+        <li><a href="about.html" class="nav-about">About</a></li>
+        <li><a href="services.html" class="nav-services">Services</a></li>
+        <li><a href="galleries.html" class="nav-galleries">Galleries</a></li>
+        <li><a href="drawings.html" class="nav-drawings">Drawings</a></li>
+        <li><a href="contact.html" class="nav-contact active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="contact-columns">
+      <!-- ✅ Only one form tag -->
+      <div class="contact-form-column">
+        <h1>Email Us</h1>
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          action="thank-you.html"
+          class="contact-form"
+          autocomplete="off">
+
+          <!-- hidden field required by Netlify -->
+          <input type="hidden" name="form-name" value="contact" />
+
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="Full Name" placeholder="Your full name" required />
+
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="Email" placeholder="you@example.com" required />
+
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="Phone" placeholder="+61 4XX XXX XXX" />
+
+          <label for="message">Message</label>
+          <textarea id="message" name="Message" rows="6" placeholder="Type your message here..." required></textarea>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Contact Information Column -->
+      <div class="contact-info-column">
+        <h1>Contact Us</h1>
+        <p class="intro-text">
+          At Ahbee Fabrication, we specialize in designing and building high-quality, custom kitchen trailers and a wide range of trailers tailored specifically to your unique requirements. Whether you’re embarking on a new project, seeking a detailed quote, or looking for expert guidance, our experienced team is here to provide personalized solutions every step of the way. Please use the contact form or the contact details provided to get in touch. We look forward to collaborating with you to bring your vision to life.
+        </p>
+
+        <section class="contact-info">
+          <h2>Our Contact Information</h2>
+          <p><strong>Phone:</strong> +61 4 0387 2586</p>
+          <p><strong>Email:</strong> <a href="mailto:ahbee2963@gmail.com">ahbee2963@gmail.com</a></p>
+          <p><strong>Business Hours:</strong> Monday to Friday, 8:00 AM – 5:00 PM</p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Ahbee Fabrication</p>
+  </footer>
+</body>
+</html>

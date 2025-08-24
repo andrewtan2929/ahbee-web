@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galleries | Ahbee Fabrication</title>
+  <link rel="stylesheet" href="css/galleries.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="nav-home">Home</a></li>
+        <li><a href="about.html" class="nav-about">About</a></li>
+        <li><a href="services.html" class="nav-services">Services</a></li>
+        <li><a href="galleries.html" class="nav-galleries active">Galleries</a></li>
+        <li><a href="drawings.html" class="nav-drawings">Drawings</a></li>
+        <li><a href="contact.html" class="nav-contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Galleries</h1>
+    <p class="subtitle">View our past projects and fabrication work in our galleries.</p>
+
+    <div class="gallery-container">
+
+      <!-- Cage Trailer block -->
+      <div class="gallery-item-wrapper">
+        <div class="gallery-caption">Cage Trailer</div>
+        <div class="slideshow-wrapper">
+          <div class="gallery-item slideshow" id="slideshow-cage"></div>
+          <div class="slideshow-controls" id="controls-cage"></div>
+        </div>
+      </div>
+
+      <!-- Kitchen Trailer block -->
+      <div class="gallery-item-wrapper">
+        <div class="gallery-caption">Kitchen Trailer</div>
+        <div class="slideshow-wrapper">
+          <div class="gallery-item slideshow" id="slideshow-kitchen"></div>
+          <div class="slideshow-controls" id="controls-kitchen"></div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Ahbee Fabrication</p>
+  </footer>
+
+  <script>
+    const galleries = {
+      "slideshow-cage": [
+        "images/cage_trailer/1.jpg",
+        "images/cage_trailer/2.jpg",
+        "images/cage_trailer/3.jpg",
+        "images/cage_trailer/4.jpg",
+        "images/cage_trailer/5.jpg",
+        "images/cage_trailer/6.jpg",
+        "images/cage_trailer/7.jpg",
+        "images/cage_trailer/8.jpg",
+        "images/cage_trailer/9.jpg",
+        "images/cage_trailer/10.jpg",
+        "images/cage_trailer/11.jpg",
+        "images/cage_trailer/12.jpg"
+      ],
+      "slideshow-kitchen": [
+        "images/kitchen_trailer/1.jpg",
+        "images/kitchen_trailer/2.jpg",
+        "images/kitchen_trailer/3.jpg",
+        "images/kitchen_trailer/4.jpg",
+        "images/kitchen_trailer/5.jpg",
+        "images/kitchen_trailer/6.jpg",
+        "images/kitchen_trailer/7.jpg",
+        "images/kitchen_trailer/8.jpg",
+        "images/kitchen_trailer/9.jpg",
+        "images/kitchen_trailer/10.jpg",
+        "images/kitchen_trailer/11.jpg",
+        "images/kitchen_trailer/12.jpg",
+        "images/kitchen_trailer/13.jpg",
+        "images/kitchen_trailer/14.jpg",
+        "images/kitchen_trailer/15.jpg",
+        "images/kitchen_trailer/16.jpg",
+        "images/kitchen_trailer/17.jpg"
+      ]
+    };
+
+    function createSlideshow(containerId, imagePaths, controlsId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      container.querySelectorAll('img').forEach(img => img.remove());
+
+      imagePaths.forEach((src, i) => {
+        const img = document.createElement('img');
+        img.src = src;
+        if (i === 0) img.classList.add('active');
+        container.appendChild(img);
+      });
+
+      let index = 0;
+      const slides = container.querySelectorAll('img');
+      let intervalId = null;
+
+      function showSlide(newIndex) {
+        if (slides.length === 0) return;
+        slides[index].classList.remove('active');
+        index = (newIndex + slides.length) % slides.length;
+        slides[index].classList.add('active');
+      }
+
+      function startSlideshow() {
+        if (intervalId) return;
+        intervalId = setInterval(() => showSlide(index + 1), 3000);
+      }
+
+      function stopSlideshow() {
+        if (intervalId) {
+          clearInterval(intervalId);
+          intervalId = null;
+        }
+      }
+
+      const controls = document.getElementById(controlsId);
+      controls.innerHTML = '';
+
+      const prevBtn = document.createElement('button');
+      prevBtn.textContent = '⟨';
+      prevBtn.addEventListener('click', () => { stopSlideshow(); showSlide(index - 1); });
+
+      const startBtn = document.createElement('button');
+      startBtn.textContent = 'Start';
+      startBtn.addEventListener('click', startSlideshow);
+
+      const stopBtn = document.createElement('button');
+      stopBtn.textContent = 'Stop';
+      stopBtn.addEventListener('click', stopSlideshow);
+
+      const nextBtn = document.createElement('button');
+      nextBtn.textContent = '⟩';
+      nextBtn.addEventListener('click', () => { stopSlideshow(); showSlide(index + 1); });
+
+      controls.append(prevBtn, startBtn, stopBtn, nextBtn);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      createSlideshow('slideshow-cage', galleries['slideshow-cage'], 'controls-cage');
+      createSlideshow('slideshow-kitchen', galleries['slideshow-kitchen'], 'controls-kitchen');
+    });
+  </script>
+</body>
+</html>
+
