@@ -68,19 +68,19 @@
 
     <!-- EmailJS SDK -->
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script src="js/email-config.js"></script>
     <script>
       (function() {
-        emailjs.init(EMAILJS_CONFIG.userID);
+        emailjs.init("duFqBs22qoZFLdppq"); // Replace with your EmailJS user ID
       })();
-
+    </script>
+    <script>
       document.getElementById('contact-form').addEventListener('submit', function(event) {
         event.preventDefault(); // prevent page reload
 
-        emailjs.sendForm(EMAILJS_CONFIG.serviceID, EMAILJS_CONFIG.templateID, this)
+        emailjs.sendForm('service_jyazxyq', 'template_jv9fomd', this)
           .then(function() {
             alert('Message sent successfully!');
-            window.location.href = 'thank-you.html';
+            window.location.href = 'thank-you.html'; // redirect after success
           }, function(error) {
             alert('Failed to send message: ' + JSON.stringify(error));
           });
