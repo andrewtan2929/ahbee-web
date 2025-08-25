@@ -66,34 +66,26 @@
     <p>&copy; 2025 Ahbee Fabrication</p>
   </footer>
 
-  <!-- EmailJS SDK -->
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-  <script>
-    (function(){
-      // Correctly Base64 encoded keys
-      var a="ZHVGcUJzMjJxb0ZMRGRwcHE="; // PUBLIC_KEY
-      var b="c2VydmljZV9qeWF6eHlx";     // SERVICE_ID
-      var c="dGVtcGxhdGVfanY5Zm9tZA=="; // TEMPLATE_ID
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+      (function() {
+        emailjs.init("duFqBs22qoZFLdppq"); // Replace with your EmailJS user ID
+      })();
+    </script>
+    <script>
+      document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // prevent page reload
 
-      // Decode keys
-      var PUBLIC_KEY = atob(a),
-          SERVICE_ID = atob(b),
-          TEMPLATE_ID = atob(c);
-
-      emailjs.init(PUBLIC_KEY);
-
-      document.getElementById('contact-form').addEventListener('submit', function(e){
-        e.preventDefault();
-        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this)
-          .then(function(){
+        emailjs.sendForm('service_jyazxyq', 'template_jv9fomd', this)
+          .then(function() {
             alert('Message sent successfully!');
-            window.location.href = 'thank-you.html';
-          }, function(error){
+            window.location.href = 'thank-you.html'; // redirect after success
+          }, function(error) {
             alert('Failed to send message: ' + JSON.stringify(error));
-            console.error(error);
           });
       });
-    })();
-  </script>
+    </script>
+
 </body>
 </html>
