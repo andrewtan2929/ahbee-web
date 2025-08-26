@@ -67,37 +67,37 @@
   </footer>
 
   <!-- Call Netlify Function instead of exposing keys -->
-  <script>
-    document.getElementById('contact-form').addEventListener('submit', async function(event) {
-      event.preventDefault();
+<script>
+document.getElementById('contact-form').addEventListener('submit', async function(event) {
+  event.preventDefault();
 
-      const formData = {
-        user_name: this.user_name.value,
-        user_email: this.user_email.value,
-        user_phone: this.user_phone.value,
-        message: this.message.value
-      };
+  const formData = {
+    user_name: this.user_name.value,
+    user_email: this.user_email.value,
+    user_phone: this.user_phone.value,
+    message: this.message.value
+  };
 
-      try {
-        const response = await fetch('/.netlify/functions/send-email', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-          alert('Message sent successfully!');
-          window.location.href = 'thank-you.html';
-        } else {
-          alert('Failed to send message: ' + result.error);
-        }
-      } catch (err) {
-        alert('Error sending message: ' + err.message);
-      }
+  try {
+    const res = await fetch("/.netlify/functions/send-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData)
     });
-  </script>
+
+    const result = await res.json();
+
+    if (res.ok) {
+      alert(result.message);
+      window.location.href = "thank-you.html";
+    } else {
+      throw new Error(result.error);
+    }
+  } catch (err) {
+    alert("Failed to send message: " + err.message);
+  }
+});
+</script>
 
 </body>
 </html>
