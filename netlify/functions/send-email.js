@@ -1,5 +1,3 @@
-import fetch from "node-fetch"; // make sure node-fetch is installed if needed
-
 export async function handler(event, context) {
   try {
     // Parse form data from frontend
@@ -23,7 +21,7 @@ export async function handler(event, context) {
       }
     };
 
-    // Call EmailJS REST API
+    // Call EmailJS REST API using built-in fetch
     const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
       method: "POST",
       headers: {
