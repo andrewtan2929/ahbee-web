@@ -66,38 +66,38 @@
     <p>&copy; 2025 Ahbee Fabrication</p>
   </footer>
 
-  <!-- Call Netlify Function instead of exposing keys -->
-<script>
-document.getElementById('contact-form').addEventListener('submit', async function(event) {
-  event.preventDefault();
+  <!-- Call Netlify Function to send email -->
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', async function(event) {
+      event.preventDefault();
 
-  const formData = {
-    user_name: this.user_name.value,
-    user_email: this.user_email.value,
-    user_phone: this.user_phone.value,
-    message: this.message.value
-  };
+      const formData = {
+        user_name: this.user_name.value,
+        user_email: this.user_email.value,
+        user_phone: this.user_phone.value,
+        message: this.message.value
+      };
 
-  try {
-    const res = await fetch("/.netlify/functions/send-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData)
+      try {
+        const res = await fetch("/.netlify/functions/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData)
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+          alert(result.message);
+          window.location.href = "thank-you.html";
+        } else {
+          throw new Error(result.error);
+        }
+      } catch (err) {
+        alert("Failed to send message: " + err.message);
+      }
     });
-
-    const result = await res.json();
-
-    if (res.ok) {
-      alert(result.message);
-      window.location.href = "thank-you.html";
-    } else {
-      throw new Error(result.error);
-    }
-  } catch (err) {
-    alert("Failed to send message: " + err.message);
-  }
-});
-</script>
+  </script>
 
 </body>
 </html>
