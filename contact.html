@@ -66,26 +66,38 @@
     <p>&copy; 2025 Ahbee Fabrication</p>
   </footer>
 
-    <!-- EmailJS SDK -->
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-      (function() {
-        emailjs.init("duFqBs22qoZFLdppq"); // Replace with your EmailJS user ID
-      })();
-    </script>
-    <script>
-      document.getElementById('contact-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // prevent page reload
+  <!-- Call Netlify Function instead of exposing keys -->
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', async function(event) {
+      event.preventDefault();
 
-        emailjs.sendForm('service_jyazxyq', 'template_jv9fomd', this)
-          .then(function() {
-            alert('Message sent successfully!');
-            window.location.href = 'thank-you.html'; // redirect after success
-          }, function(error) {
-            alert('Failed to send message: ' + JSON.stringify(error));
-          });
-      });
-    </script>
+      const formData = {
+        user_name: this.user_name.value,
+        user_email: this.user_email.value,
+        user_phone: this.user_phone.value,
+        message: this.message.value
+      };
+
+      try {
+        const response = await fetch('/.netlify/functions/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert('Message sent successfully!');
+          window.location.href = 'thank-you.html';
+        } else {
+          alert('Failed to send message: ' + result.error);
+        }
+      } catch (err) {
+        alert('Error sending message: ' + err.message);
+      }
+    });
+  </script>
 
 </body>
 </html>
