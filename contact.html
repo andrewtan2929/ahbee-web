@@ -67,9 +67,9 @@
   </footer>
 
   <!-- Call Netlify Function to send email -->
-  <script>
+    <script>
     document.getElementById('contact-form').addEventListener('submit', async function(event) {
-      event.preventDefault();
+      event.preventDefault(); // prevent default form submission
 
       const formData = {
         user_name: this.user_name.value,
@@ -88,8 +88,8 @@
         const result = await res.json();
 
         if (res.ok) {
-          alert(result.message);
-          window.location.href = "thank-you.html";
+          alert(result.message); // success message
+          window.location.href = "thank-you.html"; // redirect to thank-you page
         } else {
           throw new Error(result.error);
         }
@@ -97,7 +97,7 @@
         alert("Failed to send message: " + err.message);
       }
     });
-  </script>
+    </script>
 
 </body>
 </html>
