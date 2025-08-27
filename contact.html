@@ -26,8 +26,22 @@
       <!-- Form Column -->
       <div class="contact-form-column">
         <h1>Email Us</h1>
-        <form id="contact-form" class="contact-form" name="contact">
+        <form
+          id="contact-form"
+          class="contact-form"
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          action="thank-you.html"
+        >
+          <!-- Hidden Netlify fields -->
           <input type="hidden" name="form-name" value="contact" />
+          <p class="hidden-field">
+            <label>Don’t fill this out if you’re human:
+              <input name="bot-field">
+            </label>
+          </p>
 
           <label for="name">Full Name</label>
           <input type="text" id="name" name="user_name" placeholder="Your full name" required>
@@ -65,39 +79,5 @@
   <footer>
     <p>&copy; 2025 Ahbee Fabrication</p>
   </footer>
-
-  <!-- Call Netlify Function to send email -->
-    <script>
-    document.getElementById('contact-form').addEventListener('submit', async function(event) {
-      event.preventDefault(); // prevent default form submission
-
-      const formData = {
-        user_name: this.user_name.value,
-        user_email: this.user_email.value,
-        user_phone: this.user_phone.value,
-        message: this.message.value
-      };
-
-      try {
-        const res = await fetch("/.netlify/functions/send-email", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData)
-        });
-
-        const result = await res.json();
-
-        if (res.ok) {
-          alert(result.message); // success message
-          window.location.href = "thank-you.html"; // redirect to thank-you page
-        } else {
-          throw new Error(result.error);
-        }
-      } catch (err) {
-        alert("Failed to send message: " + err.message);
-      }
-    });
-    </script>
-
 </body>
 </html>
