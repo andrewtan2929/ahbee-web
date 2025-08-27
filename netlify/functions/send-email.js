@@ -1,39 +1,39 @@
+import sgMail from '@sendgrid/mail';
+
 export async function handler(event, context) {
   try {
-    // Parse form data from frontend
+    // Parse the form data sent from frontend
     const data = JSON.parse(event.body);
 
-    // Read environment variables
-    const serviceId = process.env.SERVICE_ID;
-    const templateId = process.env.TEMPLATE_ID;
-    const privateKey = process.env.PRIVATE_KEY; // Make sure this exists in Netlify
+    // Read SendGrid API key from Netlify environment variables
+    const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
+    if (!SENDGRID_API_KEY) {
+      throw new Error("SendGrid API key is missing in environment variables.");
+    }
 
-    // Prepare the payload for EmailJS REST API (no user_id needed)
-    const payload = {
-      service_id: serviceId,
-      template_id: templateId,
-      template_params: {
-        user_name: data.user_name,
-        user_email: data.user_email,
-        user_phone: data.user_phone,
-        message: data.message
-      }
+    sgMail.setApiKey(SENDGRID_API_KEY);
+
+    // Prepare the email
+    const msg = {
+      to: 'ahbee2963@gmail.com',          // Your email where messages are received
+      from: 'noreply@ahbee.com',          // Verified sender email in SendGrid
+      subject: `New message from ${data.user_name} via Contact Form`,
+      text: `
+        Name: ${data.user_name}
+        Email: ${data.user_email}
+        Phone: ${data.user_phone}
+        Message: ${data.message}
+      `,
+      html: `
+        <p><strong>Name:</strong> ${data.user_name}</p>
+        <p><strong>Email:</strong> ${data.user_email}</p>
+        <p><strong>Phone:</strong> ${data.user_phone}</p>
+        <p><strong>Message:</strong><br>${data.message}</p>
+      `
     };
 
-    // Send email using EmailJS REST API with Bearer auth
-    const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${privateKey}` // secure private key
-      },
-      body: JSON.stringify(payload)
-    });
-
-    if (!response.ok) {
-      const text = await response.text(); // Get response details
-      throw new Error(`EmailJS error: ${response.status} - ${text}`);
-    }
+    // Send the email
+    await sgMail.send(msg);
 
     return {
       statusCode: 200,
@@ -41,6 +41,7 @@ export async function handler(event, context) {
     };
 
   } catch (err) {
+    console.error("Error sending email:", err);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: err.message })
