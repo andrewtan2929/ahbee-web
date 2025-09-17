@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ahbee.netlify.app/sitemap.xml
